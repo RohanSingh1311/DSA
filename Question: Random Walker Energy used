@@ -1,0 +1,59 @@
+/*code starts from line 37
+The Random Walker
+
+Harshit recently encountered a beautifull island, and the island was in the form of a chess
+board, a 8*8 chess board to be more precise. As Harshit was alone on the island and
+spending some time on the island he started to feel lonely. As he was looking around the
+island he found one of his friend in a particular cell of the chess board. As the days were
+very sunny out there so moving between cells cost him 1 unit of energy i.e. moving from a
+cell to any of its adjacent cell cost him one unit of energy. Now adjacent cells are defined as
+the cells having common edges or common vertices, i.e he can travel to all the eight
+directions from a given cell if possible.
+You are given t test cases, and in each test case there will be two string namely node1(The
+starting point for Harshit) and node2(Location of Harshit's friend), you are required to print
+the minimum amount of energy unit lost by Harshit to reach his friend's cell, and each of the
+output should be on a seperate line.
+
+Input format :
+The first line of the input will be a integer t (1<=t<= 105).
+Corresponding to each test case t, you will be given two string of length 2 as input namely
+node1 and node2.
+
+IMPORTANT :- The string for node1 and node2 will be having the first character as an
+alphabet (a-h) and the second character will be a digit (1 8)
+Output format :
+Corresponding to each test case toutput the minimum amount of energy lost by Harshit to
+travel to his friend.
+
+Sample Input :
+1
+a8
+h1
+Sample Output :
+7
+Problem Author :- Ankit Raj
+*/
+
+#include<iostream>
+using namespace std;
+int main(){
+    char n1[2], n2[2];
+    for(int i=0; i<2; i++){
+        cin>>n1[i];
+    }
+    for(int i=0; i<2; i++){
+        cin>>n2[i];
+    }
+    
+    int x1,y1,x2,y2;//cordinates
+    //conterting to int
+    
+    x1=(int)n1[0]-96;
+    y1=(int)n1[1]-48;
+    x2=(int)n2[0]-96;
+    y2=(int)n2[1]-48;
+    
+    cout<<max(abs(x1-x2), abs(y1-y2));
+    return 0;
+    
+}
