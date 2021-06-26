@@ -1,0 +1,67 @@
+//code starts from line 36
+
+// Tn election; Quick explaination!!
+// j will vote for i only if j has influence greater than or equal to 
+// sum of influence between i &j(excluding both i & j) 
+// yout task is to find number of votes for each candidate
+
+/*question:
+TNP election
+There are N Students who are competing in an election of president of TNP (Tranning and
+placements). They are standing in a line in the order from student 1 to student N. For each I
+(1 sls N), the I-th student has an influence level of Sp
+A single student may cast any number of votes. Student J will vote for student I (1) if and
+only if the influence level of the J-th student is greater than or equal to the sum of influence
+levels of all the students standing between them (excluding the I-th and J-th student).
+Your task is to find the number of votes received by each student.
+Input
+The first line contains a single
+integer N denoting the number of students. • The second line contains N space-separated
+integers S₁, S2..... SN
+Output
+Print a single line containing N space-separated Integers. For each valid I, the 1-th of these
+Integers should denote the number of votes the I-th student will get.
+Constraints
+1s Ns 105
+1s Ss 109 for each valid
+Sample Input:
+4
+4321
+Sample Output:
+1 2 3 2
+Problem Author: Arpit Kaushik
+*/
+
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	int arr[5]={4,3,3,2,1};
+	int n=5;
+	for (int i = 0; i < n; i++) {
+	   int count=0;
+	   for (int j = 0; j < n; j++) {
+	   int subsum=0;
+	       if(i==j){
+	           continue;
+	       }
+	       else{
+	           int s=i,e=j;
+	           if(s>e){
+	             s^=e;
+	             e^=s;
+	             s^=e;
+	           }
+	           for (int k = s+1; k < e; k++) {
+	               subsum+=arr[k];
+	           }
+	       }
+	       if(arr[j]>=subsum){
+	           ++count;
+	       }
+	   }
+	   cout<<count<<" ";
+	}
+	return 0;
+}
